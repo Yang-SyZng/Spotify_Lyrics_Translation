@@ -1,9 +1,13 @@
-#!name=Spotify歌词翻译
+#!name=Spotify_Translation
 
 #!desc=自行修改自己的appid和密钥
 
 [MITM]
+# 如果其他地方填入过此域名可以直接删除-…-
+
 hostname = %APPEND% spclient.wg.spotify.com
+
 [Script]
+
 # 修改下方argument中的appid和securityKey,填入自己的appid和密钥
 spotify歌词翻译 = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/,requires-body=1,binary-body-mode=1,max-size=131072,script-path=https://raw.githubusercontent.com/Yang-SyZng/Spotify_Lyrics_Translation/main/spotify-lyric.js,argument=appid=此处填入&securityKey=此处填入
