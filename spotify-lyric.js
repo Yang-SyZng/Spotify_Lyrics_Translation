@@ -57,21 +57,21 @@ if('z1' !== originLanguage){
         },
     }, (error, response, data) => {
         if(error){
-            commonApi.msg(notifyName, '百度翻译', `error错误${error}`);
+            commonApi.msg(notifyName, 'Translate', `error错误${error}`);
             $done({});
         } else if(response.status !== 200){
-            commonApi.msg(notifyName, '百度翻译', `响应不为200:${response.status}`);
+            commonApi.msg(notifyName, 'Translate', `响应不为200:${response.status}`);
             $done({});
         } else {
             const baiduResult = JSON.parse(data);
             if(baiduResult.error_code && baiduResult.error_code !== '52000'){
                 if (baiduResult.error_code === '54003') {
                     console.log(`访问频率受限:${data}`);
-                    // commonApi.msg(notifyName, '百度翻译', `访问频率受限:${data}`);
+                    // commonApi.msg(notifyName, 'Translate', `访问频率受限:${data}`);
                 } else if (baiduResult.error_code === '52003') {
-                    commonApi.msg(notifyName, '百度翻译', `未授权用户,请检查appid和密钥配置:${data}`);
+                    commonApi.msg(notifyName, 'Translate', `未授权用户,请检查appid和密钥配置:${data}`);
                 } else {
-                    commonApi.msg(notifyName, '百度翻译', `其他错误:${data}`);
+                    commonApi.msg(notifyName, 'Translate', `其他错误:${data}`);
                 }
                 $done({});
             } else {
